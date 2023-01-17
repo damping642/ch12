@@ -1,0 +1,26 @@
+cmd>laravel new ch12
+cmd>cd ch12
+cmd>composer update
+cmd>cp .env.example .env
+cmd>php artisan key:generate
+
+至phpMyadmin建立ch12資料庫
+
+cmd>composer require laravel/ui
+cmd>php artisan ui vue --auth
+cmd>npm install && npm run dev
+
+cmd>del .\database\migrations\2019_08_19_000000_create_failed_jobs_table.php
+cmd>del .\database\migrations\2019_12_14_000001_create_personal_access_tokens_table.php
+cmd>php artisan migrate
+
+修改./app/User.php
+class User extends Model{
+  protect $fillable = ['name', 'email', 'password', 'sex', 'telephone', 'birthday', 'memo',];
+}
+
+到這個檔案app/Http/Providers/RouteServiceProvider.php
+將下列這一行註解取消
+protected $namespace = 'App\Http\Controllers';
+
+cmd>php artisan make:Controller Auth\UserController
